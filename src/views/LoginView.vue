@@ -1,7 +1,4 @@
 <template>
-  <div>
-    {{ ruleForm }}
-  </div>
   <el-form ref='ruleFormRef' :model="ruleForm" :rules='rules' label-width='80px' style="max-width: 320px">
     <el-form-item label="用户名" prop='username'>
       <el-input v-model="ruleForm.username" placeholder='请输入用户名' />
