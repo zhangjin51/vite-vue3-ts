@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed, watchEffect } from 'vue'
 const props = defineProps<{ isCollapse: boolean }>()
-const imgWidth = computed(() => {
-  return props.isCollapse ? '32px' : '64px'
-})
 </script>
 
 <template>

@@ -14,8 +14,8 @@
         </el-icon>
       </el-header>
       <el-main>
-        <div>{{ count }}</div>
-        <button @click="handleClick">increment</button>
+        <div id="echarts-main" style="width: 600px; height: 400px"></div>
+        <el-button @click="fetchData">click</el-button>
       </el-main>
     </el-container>
   </el-container>
@@ -25,8 +25,17 @@
 import Logo from '../components/LogoBar.vue'
 import Menu from '../components/MenuBar.vue'
 import useAside from '../hooks/asideHook.ts'
+import useEcharts from '../hooks/useEcharts.ts'
+import { dosendmsgcode } from '@/api/user.js'
 
 const { collapse, sideControl, asideWidth } = useAside()
+useEcharts()
+
+const fetchData = () => {
+  dosendmsgcode().then((res) => {
+    console.log('***', res)
+  })
+}
 
 console.log(collapse)
 </script>

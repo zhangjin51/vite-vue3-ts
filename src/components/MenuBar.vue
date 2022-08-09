@@ -2,6 +2,7 @@
   <el-menu
     active-text-color="#409EFF"
     text-color="#fff"
+    unique-opened
     default-active="1"
     class="el-menu-vertical-demo"
     :collapse="isCollapse"
@@ -58,7 +59,8 @@ const handleClose = (key: string, keyPath: string[]) => {
 </script>
 
 <style lang="scss" scoped>
-.el-menu-vertical-demo {
+.el-menu-vertical-demo,
+.el-menu-item-group {
   min-height: 400px;
   background-color: $menuBg;
   border: none;

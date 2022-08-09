@@ -10,11 +10,11 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+      resolvers: [ElementPlusResolver()]
+    })
   ],
   resolve: {
     alias: {
@@ -25,6 +25,15 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `@import "./src/styles/variable.scss";`
+      }
+    }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://elm.cangdu.org',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }
