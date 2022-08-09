@@ -3,7 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', component: HomeView },
-  { path: '/other', component: () => import('../views/OtherView.vue') }
+  { path: '/login', component: () => import('../views/LoginView.vue') }
 ]
 
 const router = createRouter({
