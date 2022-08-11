@@ -15,7 +15,6 @@
       </el-header>
       <el-main>
         <div id="echarts-main" style="width: 600px; height: 400px"></div>
-        <el-button @click="fetchData">click</el-button>
       </el-main>
     </el-container>
   </el-container>
@@ -26,18 +25,49 @@ import Logo from '../components/LogoBar.vue'
 import Menu from '../components/MenuBar.vue'
 import useAside from '../hooks/asideHook.ts'
 import useEcharts from '../hooks/useEcharts.ts'
-import { dosendmsgcode } from '@/api/user.js'
+
+import {
+  getUsersCountByDate,
+  getUsersCount,
+  getOrdersCountByDate,
+  getOrdersCount,
+  getAdminsCountByDate,
+  getAdminsCount
+} from '@/api/home.js'
 
 const { collapse, sideControl, asideWidth } = useAside()
+
 useEcharts()
 
-const fetchData = () => {
-  dosendmsgcode().then((res) => {
-    console.log('***', res)
+const localDate = new Date().toLocaleDateString().replace(/\//g, '-')
+const currentDate = new Date().getDate()
+const userCountByDate = reactive([])
+const ordersCountByDate = reactive([])
+const adminsCountByDate = reactive([])
+for (let i = 0; i < 7; i++) {
+  let temp = localDate
+  const arr = temp.split('-')
+  arr[2] = currentDate - i + ''
+  const date = arr.join('-')
+
+  getUsersCountByDate(date).then(res = > {
+    console.log(res)
+    // userCountByDate.unshift()
   })
+  // getOrdersCountByDate(date).then(res = > {})
+  // getAdminsCountByDate(date).then(res = > {})
 }
 
-console.log(collapse)
+// Promise.all([
+//   getUsersCountByDate(),
+//   getUsersCount(),
+//   getOrdersCountByDate(),
+//   getOrdersCount(),
+//   getAdminsCountByDate(),
+//   getAdminsCount()
+// ]).then((values) => {
+//   console.log('@@@', values)
+// })
 </script>
 
 <style lang="scss" scoped>

@@ -20,6 +20,24 @@ export function cartGetRecommendlist(data) {
   })
 }
 
+// login
+export function login(data) {
+  return fetch.request({
+    url: "/v2/login",
+    method: 'post',
+    data
+  })
+}
+
+
+export function adminLogin(data) {
+  return fetch.request({
+    url: "/admin/login",
+    method: 'post',
+    data
+  })
+}
+
 // 获取验证码
 export function dosendmsgcode(data) {
   return fetch.request({
